@@ -27,6 +27,8 @@ const double TICK_DELAY = 0.15;
 /* [1, 0] = 1 */
 /* [15, 0] = 15 */
 /* [0, 1] = 16 */
+/* [1, 1] = 17 */
+/* [2, 1] = 18 */
 /* etc. */
 
 /* Stores snake position, [0] is a head*/
@@ -97,7 +99,7 @@ bool CheckBoardCollision()
     else return false;
 }
 
-/* Increase snake size and generate new position for apple */
+/* Increases snake size and generates new position for apple */
 void EatApple()
 {
     snakeLength++;
@@ -114,7 +116,7 @@ void EatApple()
     board[apple] = APPLE;
 }
 
-/* Updates snake position and check collisions */
+/* Updates snake position and checks for collisions */
 void UpdateSnake()
 {  
     if(CheckBoardCollision() || board[GetNextIndex()] == SNAKE)

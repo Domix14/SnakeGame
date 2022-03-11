@@ -51,7 +51,7 @@ uint16_t ToIndex(uint16_t x, uint16_t y)
     return x + ((y % 16) * 16);
 }
 
-void ResetGame()
+void ResetGame(void)
 {
     for(uint16_t i = 0;i < 256;i++) board[i] = EMPTY;
     snakeLength = 1;
@@ -63,7 +63,7 @@ void ResetGame()
     elapsedTime = GetTime();
 }
 
-void InitializeGame()
+void InitializeGame(void)
 {
     InitWindow(800, 800, "SnakeGame");
     SetTargetFPS(60);
@@ -71,7 +71,7 @@ void InitializeGame()
 }
 
 /* Returns next head position based on direction */
-uint16_t GetNextIndex()
+uint16_t GetNextIndex(void)
 {
     if(direction == UP) return snake[0] - 16;
     else if(direction == RIGHT) return snake[0] + 1;
@@ -81,7 +81,7 @@ uint16_t GetNextIndex()
 }
 
 /* Updates direction based on input */
-void UpdateDirection()
+void UpdateDirection(void)
 {
     if(IsKeyPressed(KEY_W) && direction != DOWN) direction = UP;
     else if(IsKeyPressed(KEY_D) && direction != LEFT) direction = RIGHT;
@@ -90,7 +90,7 @@ void UpdateDirection()
 }
 
 /* Returns true if snake hits wall in next move */
-bool CheckBoardCollision()
+bool CheckBoardCollision(void)
 {
     if(snake[0] < 16 && direction == UP) return true;
     else if(snake[0] % 16 == 15 && direction == RIGHT) return true;
@@ -100,7 +100,7 @@ bool CheckBoardCollision()
 }
 
 /* Increases snake size and generates new position for apple */
-void EatApple()
+void EatApple(void)
 {
     snakeLength++;
     board[apple] = EMPTY;
@@ -117,7 +117,7 @@ void EatApple()
 }
 
 /* Updates snake position and checks for collisions */
-void UpdateSnake()
+void UpdateSnake(void)
 {  
     if(CheckBoardCollision() || board[GetNextIndex()] == SNAKE)
     {
@@ -145,7 +145,7 @@ void UpdateSnake()
     board[snake[0]] = SNAKE;
 }
 
-void DrawSnake()
+void DrawSnake(void)
 {
     for(uint16_t i = 0;i < snakeLength;i++)
     {
@@ -153,7 +153,7 @@ void DrawSnake()
     }
 }
 
-void DrawBoard()
+void DrawBoard(void)
 {
     for(int i = 1;i < 16;i++)
     {
@@ -166,7 +166,7 @@ void DrawBoard()
     }
 }
 
-int main()
+int main(void)
 {
     InitializeGame();
 

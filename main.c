@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <stdio.h>
-#include "raylib.h"
+#include <raylib.h>
 
 typedef enum
 {
